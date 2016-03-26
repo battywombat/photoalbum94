@@ -1,5 +1,6 @@
 package photoalbum.controller;
 
-public class Albums {
+
+public class Albums extends AlbumController {
 
 }

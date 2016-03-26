@@ -1,11 +1,42 @@
 package photoalbum;
 
-import photoalbum.controller.Login;
+import java.io.IOException;
 
-public class PhotoAlbum extends Login {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import photoalbum.controller.AlbumController;
+
+public class PhotoAlbum extends Application {
 
 	public static void main(String[] args)  {
 		launch(args);
+	}
+	
+	@Override
+	public void start(Stage primaryStage) {
+		switchScene(primaryStage, "login");
+	}
+	
+	public void switchScene(Stage primaryStage, String fxmlFile) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/view/"+fxmlFile+".fxml"));
+		Pane root;
+		try {
+			root = (Pane)loader.load();	
+			System.out.println("Loaded!");
+			AlbumController controller = loader.getController();
+			controller.setApp(this);
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("Photo Album"); 
+			primaryStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
 }
