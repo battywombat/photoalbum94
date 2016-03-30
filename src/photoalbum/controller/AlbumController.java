@@ -9,4 +9,6 @@ public abstract class AlbumController {
 	public void setApp(PhotoAlbum app) {
 		this.app = app;
 	}
+	
+	public abstract void init();
 }

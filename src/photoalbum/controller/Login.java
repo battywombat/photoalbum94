@@ -29,8 +29,9 @@ public class Login extends AlbumController {
 	
 	@FXML
 	public void LoginClicked() {
-		this.app.switchScene((Stage)LoginField.getScene().getWindow(), "albums");
-//		String login = LoginField.getText().trim();
-//		System.out.println(login);
+		if (this.app.getUser(LoginField.getText().trim()) != null)
+			this.app.switchScene((Stage)LoginField.getScene().getWindow(), "albums");
 	}
+	
+	public void init() {} // Does nothing
 }
