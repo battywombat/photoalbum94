@@ -11,4 +11,5 @@ public abstract class AlbumController {
 	}
 	
 	public abstract void init();
+
 }
